@@ -1,11 +1,9 @@
 package br.com.alura.agenda.model;
 
 import android.support.annotation.NonNull;
-
 import java.io.Serializable;
 
 public class Aluno implements Serializable {
-
     private int id = 0;
     private  String nome;
     private  String telefone;
