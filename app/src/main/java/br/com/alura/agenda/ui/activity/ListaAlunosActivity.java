@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -19,6 +18,7 @@ import br.com.alura.agenda.dao.AlunoDAO;
 import br.com.alura.agenda.model.Aluno;
 
 public class ListaAlunosActivity extends AppCompatActivity {
+
     public static final String TITULO_APPBAR = "Lista de alunos";
     private final AlunoDAO dao = new AlunoDAO();
 
@@ -27,12 +27,12 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
         setTitle(TITULO_APPBAR);
-        configuraFebNovoAluno();
-        dao.salva(new Aluno("Alex", "111232323", "alex@gmail.com"));
-        dao.salva(new Aluno("Fran", "1221212112", "fran@gmail.com"));
+        configuraFabNovoAluno();
+        dao.salva(new Aluno("Alex", "1122223333", "alex@alura.com.br"));
+        dao.salva(new Aluno("Fran", "1122223333", "fran@gmail.com"));
     }
 
-    private void configuraFebNovoAluno() {
+    private void configuraFabNovoAluno() {
         FloatingActionButton botaoNovoAluno = findViewById(R.id.activity_lista_alunos_fab_novo_aluno);
         botaoNovoAluno.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +53,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     private void configuraLista() {
-        ListView listaDeAlunos = findViewById(R.id.activity__lista_alunos_listview);
+        ListView listaDeAlunos = findViewById(R.id.activity_lista_alunos_listview);
         final List<Aluno> alunos = dao.todos();
         listaDeAlunos.setAdapter(new ArrayAdapter<>(
                 this,

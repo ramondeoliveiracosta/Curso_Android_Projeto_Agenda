@@ -33,4 +33,3 @@ public class Aluno implements Serializable {
         return nome;
     }
 }
-

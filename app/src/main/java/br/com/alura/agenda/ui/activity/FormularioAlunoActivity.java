@@ -14,7 +14,7 @@ import br.com.alura.agenda.model.Aluno;
 
 public class FormularioAlunoActivity extends AppCompatActivity {
 
-    public static final String TITULO_APPBAR = "Cadastrar Aluno";
+    public static final String TITULO_APPBAR = "Novo aluno";
     private EditText campoNome;
     private EditText campoTelefone;
     private EditText campoEmail;
@@ -41,8 +41,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Aluno alunoCriado = criaAluno();
-                salvar(alunoCriado);
-
+                salva(alunoCriado);
             }
         });
     }
@@ -50,10 +49,10 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     private void inicializacaoDosCampos() {
         campoNome = findViewById(R.id.activity_formulario_aluno_nome);
         campoTelefone = findViewById(R.id.activity_formulario_aluno_telefone);
-        campoEmail = findViewById(R.id.activity_formulario_aluno_telefone);
+        campoEmail = findViewById(R.id.activity_formulario_aluno_email);
     }
 
-    private void salvar(Aluno aluno) {
+    private void salva(Aluno aluno) {
         dao.salva(aluno);
         finish();
     }
