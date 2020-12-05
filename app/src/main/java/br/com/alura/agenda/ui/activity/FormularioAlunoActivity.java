@@ -15,7 +15,7 @@ import static br.com.alura.agenda.ui.activity.ConstantesActivities.CHAVE_ALUNO;
 public class FormularioAlunoActivity extends AppCompatActivity {
 
     private static final String TITULO_APPBAR_NOVO_ALUNO = "Novo aluno";
-    private static final String TITULO_APPBAR_EDITA_ALUNO = "Edita aluno";
+    private static final String TITULO_APPBAR_EDITA_ALUNO = "Editar aluno";
     private EditText campoNome;
     private EditText campoTelefone;
     private EditText campoEmail;
