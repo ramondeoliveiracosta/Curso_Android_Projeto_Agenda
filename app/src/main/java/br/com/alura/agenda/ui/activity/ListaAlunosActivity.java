@@ -5,12 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import br.com.alura.agenda.R;
 import br.com.alura.agenda.dao.AlunoDAO;
+import br.com.alura.agenda.model.Aluno;
 
 public class ListaAlunosActivity extends AppCompatActivity {
     public static final String TITULO_APPBAR = "Lista de alunos";
@@ -22,6 +26,8 @@ public class ListaAlunosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_alunos);
         setTitle(TITULO_APPBAR);
         configuraFebNovoAluno();
+        dao.salva(new Aluno("Alex", "111232323", "alex@gmail.com"));
+        dao.salva(new Aluno("Fran", "1221212112", "fran@gmail.com"));
     }
 
     private void configuraFebNovoAluno() {
@@ -50,6 +56,11 @@ public class ListaAlunosActivity extends AppCompatActivity {
                 this,
                 android.R.layout.simple_list_item_1,
                 dao.todos()));
+        listaDeAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
+                Log.i("Posicao aluno", "" + posicao);
+            }
+        });
     }
-
 }
