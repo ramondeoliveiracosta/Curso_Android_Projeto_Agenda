@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import br.com.alura.agenda.R;
 import br.com.alura.agenda.dao.AlunoDAO;
 import br.com.alura.agenda.model.Aluno;
@@ -60,7 +61,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
 
             private void finalizaFormulario() {
                 preencheAluno();
-                if(aluno.temIdValido()){
+                if (aluno.temIdValido()) {
                     dao.edita(aluno);
                 } else {
                     dao.salva(aluno);
