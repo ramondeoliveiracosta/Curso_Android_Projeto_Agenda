@@ -1,9 +1,9 @@
 package br.com.alura.agenda.dao;
 
 import android.support.annotation.Nullable;
-
 import java.util.ArrayList;
 import java.util.List;
+
 import br.com.alura.agenda.model.Aluno;
 
 public class AlunoDAO {
