@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,8 +31,13 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_aluno);
         inicializacaoDosCampos();
-        configuraBotaoSalvar();
         carregaAluno();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_formulario_alunos_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void carregaAluno() {
@@ -51,24 +58,23 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         campoEmail.setText(aluno.getEmail());
     }
 
-    private void configuraBotaoSalvar() {
-        Button botaoSalvar = findViewById(R.id.activity_formulario_aluno_botao_salvar);
-        botaoSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finalizaFormulario();
-            }
+    private void finalizaFormulario() {
+        preencheAluno();
+        if (aluno.temIdValido()) {
+            dao.edita(aluno);
+        } else {
+            dao.salva(aluno);
+        }
+        finish();
+    }
 
-            private void finalizaFormulario() {
-                preencheAluno();
-                if (aluno.temIdValido()) {
-                    dao.edita(aluno);
-                } else {
-                    dao.salva(aluno);
-                }
-                finish();
-            }
-        });
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.activity_formulario_aluno_menu_salvar) {
+            finalizaFormulario();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void inicializacaoDosCampos() {
